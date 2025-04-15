@@ -1,0 +1,1 @@
+This is way to render this file into webpage
