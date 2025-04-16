@@ -1,52 +1,76 @@
 {% extends 'base.html' %}
-{% block title %} Home{% endblock title %}
+{% block title %} Todo List{% endblock title %}
 {% block body %}
-<div class="container">
-  <form action="/" method="POST">
-    <div class="mb-3">
-      <label for="title" class="form-label">Todo Title</label>
-      <input type="text" class="form-control" name="title" id="title" aria-describedby="emailHelp">
+<div class="container my-4">
+    <h1 class="display-4 text-center mb-4">Your Todo List</h1>
+    
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="h5 mb-0">Add New Todo</h2>
+                </div>
+                <div class="card-body">
+                    <form action="/" method="POST">
+                        <div class="mb-3">
+                            <label for="title" class="form-label fw-bold">Todo Title</label>
+                            <input type="text" class="form-control" name="title" id="title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="desc" class="form-label fw-bold">Todo Description</label>
+                            <textarea class="form-control" name="desc" id="desc" rows="2" required></textarea>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary py-2">
+                                <i class="bi bi-plus-circle me-2"></i>Add Todo
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <h2 class="h4 mb-3">Your Todos</h2>
+            
+            {% if allTodo|length == 0 %}
+                <div class="alert alert-info">
+                    No todos found. Add your first todo above!
+                </div>
+            {% else %}
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th scope="col">SNo</th>
+                                <th scope="col">Title</th>
+                                <th scope="col">Description</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for todo in allTodo %}
+                            <tr>
+                                <th scope="row">{{ loop.index }}</th>
+                                <td>{{ todo.title }}</td>
+                                <td>{{ todo.desc }}</td>
+                                <td>{{ todo.date_created.strftime('%Y-%m-%d %H:%M') }}</td>
+                                <td>
+                                    <div class="d-flex gap-2">
+                                        <a href="/update/{{todo.sno}}" class="btn btn-sm btn-outline-primary btn-action">
+                                            <i class="bi bi-pencil"></i> Update
+                                        </a>
+                                        <a href="/delete/{{todo.sno}}" class="btn btn-sm btn-outline-danger btn-action">
+                                            <i class="bi bi-trash"></i> Delete
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endif %}
+        </div>
     </div>
-    <div class="mb-3">
-      <label for="exampleInputPassword1" class="form-label">Todo Description</label>
-      <input type="text" name="desc" class="form-control" id="desc">
-    </div>
-    <button type="submit" class="btn btn-outline-success">Submit</button>
-  </form>
 </div>
-<div class="container my-5">
-
-  {% if allTodo|length == 0 %}
-  <div class="alert alert-warning alert-dismissible fade show" role="alert">Please add a todo</div>
-
-  {% else %}
-  <h2>Your Todo</h2>
-  <table class="table">
-    <thead style="text-align: center;">
-      <tr>
-        <th scope="col">SrNo.</th>
-        <th scope="col">Title</th>
-        <th scope="col">Description</th>
-        <th scope="col">Time</th>
-        <th scope="col" colspan="2" >Actions</th>
-      </tr>
-    </thead>
-    <tbody style="text-align: center;">
-      {% endif %}
-      {% for todo in allTodo %}
-      <tr>
-        <th scope="row">{{loop.index}}</th>
-        <td>{{todo.title}}</td>
-        <td>{{todo.desc}}</td>
-        <td>{{todo.date_created}}</td>
-        <td><a href="/update/{{todo.sno}}" button type="button"
-            class="btn btn-outline-danger btn-sm mx-1">Update</button></td>
-        <td><a href="/delete/{{todo.sno}}" button type="button"
-            class="btn btn-outline-danger btn-sm mx-2">Delete</button></td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-</div>
-
 {% endblock body %}

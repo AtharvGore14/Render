@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% block title %}About Us{% endblock %}
+
+{% block body %}
+<div class="container">
+    <!-- Hero Section -->
+    <div class="row align-items-center my-5">
+        <div class="col-lg-6">
+            <h1 class="display-4 fw-bold mb-4">About Todo App</h1>
+            <p class="lead text-muted mb-4">
+                A simple yet powerful task management application designed to help you stay organized and productive.
+            </p>
+            <div class="d-flex gap-3">
+                <a href="/" class="btn btn-primary px-4">
+                    <i class="bi bi-house-door me-2"></i>Home
+                </a>
+                <a href="#features" class="btn btn-outline-primary px-4">
+                    <i class="bi bi-star me-2"></i>Features
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-6 d-none d-lg-block">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                 alt="Productivity illustration" 
+                 class="img-fluid rounded shadow">
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div id="features" class="my-5 py-4">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold mb-3">Key Features</h2>
+            <p class="text-muted mx-auto" style="max-width: 600px;">
+                Our todo app comes packed with features to streamline your workflow and boost productivity
+            </p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex p-3 mb-3">
+                            <i class="bi bi-list-check text-primary fs-3"></i>
+                        </div>
+                        <h5 class="fw-bold">Task Management</h5>
+                        <p class="text-muted">
+                            Easily create, update, and organize your tasks in one place.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="bg-success bg-opacity-10 rounded-circle d-inline-flex p-3 mb-3">
+                            <i class="bi bi-device-phone text-success fs-3"></i>
+                        </div>
+                        <h5 class="fw-bold">Mobile Friendly</h5>
+                        <p class="text-muted">
+                            Access your tasks anywhere, anytime on any device.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="bg-warning bg-opacity-10 rounded-circle d-inline-flex p-3 mb-3">
+                            <i class="bi bi-shield-lock text-warning fs-3"></i>
+                        </div>
+                        <h5 class="fw-bold">Secure</h5>
+                        <p class="text-muted">
+                            Your data is safe with our secure platform.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Team Section -->
+    <div class="my-5 py-4">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold mb-3">About</h2>
+            <p class="text-muted mx-auto" style="max-width: 600px;">
+                Meet the person behind this project
+            </p>
+        </div>
+
+        <div class="row g- justify-content-center">
+            <div class="col-md-4 col-lg-3">
+                <div class="card border-0 shadow-sm text-center " styl>
+                    <img src="{{ url_for('static', filename='atharv.jpg') }}" 
+                         class="card-img-top rounded-circle w-50 mx-auto mt-4" 
+                         alt="Team member">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">Atharv Gore</h5>
+                        <p class="text-muted mb-2">VIT Pune</p>
+                        <div class="d-flex justify-content-center gap-3">
+                            <a href="https://github.com/AtharvGore14" class="text-primary"><i class="bi bi-github"></i></a>
+                            <a href="https://www.linkedin.com/in/atharv-gore-836b84329/" class="text-primary"><i class="bi bi-linkedin"></i></a>
+                            <a href="https://www.instagram.com/atharvv._.04/" class="text-primary"><i class="bi bi-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="card bg-primary text-white my-5 border-0 shadow">
+        <div class="card-body p-5 text-center">
+            <h2 class="fw-bold mb-3">Ready to get started?</h2>
+            <p class="mb-4 opacity-75">
+                Join thousands of users who are already boosting their productivity with our app
+            </p>
+            <a href="/" class="btn btn-light px-4 py-2 fw-bold">
+                <i class="bi bi-arrow-right me-2"></i>Get Started
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
